@@ -25,8 +25,6 @@ jobs:
         run: npm run install:frontend
       - name: build-frontend
         run: npm run build:frontend
-      - name: build-backend
-        run: npm start & npx wait-on http://localhost:3003
       - name: lint
         run: npm run lint:frontend
       - name: test
@@ -35,7 +33,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           command: npm run test:e2e:frontend
-          start: npm run start-prod
+          start: npm start
           wait-on: http://localhost:3003
       - name: Deploy to Heroku
         #if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message),'#skip')}}
