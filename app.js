@@ -40,6 +40,16 @@ if (process.env.NODE_ENV === "test") {
 	app.use("/api/testing", testingRouter);
 }
 
+//health check for the deployment pipeline
+app.get("/health", (req, res) => {
+	res.send("ok");
+});
+
+//version number simple req, res server response
+app.get("/version", (req, res) => {
+	res.send("1"); //corresponding to the current version number deployed
+});
+
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
 
