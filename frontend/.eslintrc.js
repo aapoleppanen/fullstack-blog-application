@@ -10,7 +10,7 @@ module.exports = {
 		"plugin:react/recommended",
 		"plugin:cypress/recommended",
 	],
-	ignorePatterns: ["**/build/*.js"],
+	ignorePatterns: ["build/"],
 	parserOptions: {
 		ecmaFeatures: {
 			jsx: true,
