@@ -14,8 +14,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.0
       - uses: actions/setup-node@v2.5.0
-      - name: npm install
+      - name: npm install backend
         run: npm install
+      - name: npm install lint:frontend
+        run: npm run install:frontend
       - name: Create env file
         run: |
           touch .env

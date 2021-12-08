@@ -10,7 +10,8 @@
     "start:test": "cross-env NODE_ENV=test node index.js",
     "test:e2e:frontend": "cd frontend && cypress run",
     "lint:frontend": "cd frontend && eslint .",
-    "build:frontend": "cd frontend && npm run build"
+    "build:frontend": "cd frontend && npm run build",
+    "install:fronted": "cd fronted && npm install"
   },
   "keywords": [
     "cool"
