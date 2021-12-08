@@ -11,6 +11,11 @@ on:
 jobs:
   main_deployment_pipeline:
     runs-on: ubuntu-latest
+    env: 
+      MONGODB_URI: ${{ secrets.MONGODB_URI }} 
+      TEST_MONGODB_URI: ${{secrets.TEST_MONGODB_URI}}
+      PORT: 3003
+      SECRET: ${{secrets.TOKEN_SECRET}}
     steps:
       - uses: actions/checkout@v2.4.0
       - uses: actions/setup-node@v2.5.0
@@ -18,14 +23,6 @@ jobs:
         run: npm install
       - name: npm install frontend
         run: npm run install:frontend
-      - name: Create env file
-        run: |
-          touch .env
-          PORT=3003
-          echo MONGODB_URI= ${{ secrets.MONGODB_URI }} >> .env
-          echo TEST_MONGODB_URI= ${{ secrets.TEST_MONGODB_URI }} >> .env
-          echo SECRET=${{ secrets.TOKEN_SECRET }} >> .env
-          cat .env
       - name: build-frontend
         run: npm run build:frontend
       - name: build-backend
