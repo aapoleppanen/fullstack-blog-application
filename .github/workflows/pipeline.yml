@@ -15,7 +15,7 @@ jobs:
       SKIP_PREFLIGHT_CHECK: true
       MONGODB_URI: ${{ secrets.MONGODB_URI }} 
       TEST_MONGODB_URI: ${{secrets.TEST_MONGODB_URI}}
-      PORT: 3001
+      PORT: ${{secrets.PORT}}
       SECRET: ${{secrets.TOKEN_SECRET}}
     steps:
       - uses: actions/checkout@v2.4.0
@@ -36,8 +36,8 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           command: npm run test:e2e:frontend
-          start: npm run start:test
-          wait-on: http://localhost:3001
+          start: npm run start
+          wait-on: http://localhost:3003
       - name: Deploy to Heroku
         #if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message),'#skip')}}
         uses: AkhileshNS/heroku-deploy@v3.12.12
@@ -47,6 +47,7 @@ jobs:
           heroku_email: aapo.leppanen@gmail.com
           healthcheck: https://fullstackblog-aapol.herokuapp.com/health
           rollbackonhealthcheckfailed: true
+        if: always()
   tagging_pipeline:
     runs-on: ubuntu-latest
     steps:
