@@ -17,7 +17,7 @@ jobs:
       - name: npm install
         run: npm install
       - name: build-backend
-        run: npm start-prod
+        run: npm start
       - name: build-frontend
         run: npm run build:frontend
       - name: lint
@@ -44,7 +44,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Bump version and push the tag
-        #if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message),'#skip')}}
+        if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message),'#skip')}}
         uses: anothrNick/github-tag-action@1.36.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
