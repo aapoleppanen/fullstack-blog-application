@@ -10,7 +10,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const logger = require("./utils/logger");
 
-const mongoUrl = process.env.MONGODB_URI;
+const mongoUrl = config.MONGODB_URI;
 mongoose
 	.connect(mongoUrl, {
 		useNewUrlParser: true,
@@ -40,15 +40,15 @@ if (process.env.NODE_ENV === "test") {
 	app.use("/api/testing", testingRouter);
 }
 
-//health check for the deployment pipeline
-app.get("/health", (req, res) => {
-	res.send("ok");
-});
+// //health check for the deployment pipeline
+// app.get("/health", (req, res) => {
+// 	res.send("ok");
+// });
 
-//version number simple req, res server response
-app.get("/version", (req, res) => {
-	res.send("1"); //corresponding to the current version number deployed
-});
+// //version number simple req, res server response
+// app.get("/version", (req, res) => {
+// 	res.send("1"); //corresponding to the current version number deployed
+// });
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
