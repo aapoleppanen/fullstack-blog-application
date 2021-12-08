@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v2.5.0
       - name: npm install backend
         run: npm install
-      - name: npm install lint:frontend
+      - name: npm install frontend
         run: npm run install:frontend
       - name: Create env file
         run: |
