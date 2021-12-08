@@ -36,9 +36,7 @@
     "nodemon": "^2.0.9",
     "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-jest": "^24.3.6",
-    "eslint": "7.11.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0"
+    "eslint": "7.11.0"
   },
   "jest": {
     "testEnvironment": "node"
