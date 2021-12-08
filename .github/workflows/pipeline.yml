@@ -16,10 +16,18 @@ jobs:
       - uses: actions/setup-node@v2.5.0
       - name: npm install
         run: npm install
-      - name: build-backend
-        run: npm start
+      - name: Create env file
+        run: |
+          touch .env
+          PORT=3003
+          echo MONGODB_URI= ${{ secrets.MONGODB_URI }} >> .env
+          echo TEST_MONGODB_URI= ${{ secrets.TEST_MONGODB_URI }} >> .env
+          echo SECRET=${{ secrets.TOKEN_SECRET }} >> .env
+          cat .env
       - name: build-frontend
         run: npm run build:frontend
+      - name: build-backend
+        run: npm start
       - name: lint
         run: npm run lint:frontend
       - name: test
