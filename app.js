@@ -5,6 +5,7 @@ const app = express();
 const postRouter = require("./controllers/posts");
 const usersRouter = require("./controllers/users");
 const loginRouter = require("./controllers/login");
+const healthCheckRouter = require("./controllers/healthCheck");
 const middleware = require("./utils/middleware");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -34,6 +35,7 @@ app.use(middleware.tokenExtractor);
 app.use("/api/blogs", postRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/login", loginRouter);
+app.use("/health", healthCheckRouter);
 
 if (process.env.NODE_ENV === "test") {
 	const testingRouter = require("./controllers/testing");
