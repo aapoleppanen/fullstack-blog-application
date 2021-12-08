@@ -26,7 +26,7 @@ jobs:
       - name: build-frontend
         run: npm run build:frontend
       - name: build-backend
-        run: npm start
+        run: npm start & npx wait-on http://localhost:3000
       - name: lint
         run: npm run lint:frontend
       - name: test
