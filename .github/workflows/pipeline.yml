@@ -47,7 +47,6 @@ jobs:
           heroku_email: aapo.leppanen@gmail.com
           healthcheck: https://fullstackblog-aapol.herokuapp.com/health
           rollbackonhealthcheckfailed: true
-        if: always()
   tagging_pipeline:
     runs-on: ubuntu-latest
     steps:
