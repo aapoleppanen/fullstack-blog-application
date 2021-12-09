@@ -46,7 +46,6 @@ app.use("/api/login", loginRouter);
 app.use("/health", healthCheckRouter);
 
 if (process.env.NODE_ENV === "test") {
-	console.log("app.js test if statement")
 	const testingRouter = require("./controllers/testing");
 	app.use("/api/testing", testingRouter);
 }
