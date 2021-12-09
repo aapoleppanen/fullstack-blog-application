@@ -12,8 +12,8 @@ const mongoose = require("mongoose");
 const logger = require("./utils/logger");
 
 const mongoUrl = config.MONGODB_URI;
-console.log(mongoUrl);
-console.log(config.PORT);
+console.log(mongoUrl, "mongourl");
+console.log(config.PORT, "port");
 mongoose
 	.connect(mongoUrl, {
 		useNewUrlParser: true,
@@ -40,6 +40,7 @@ app.use("/api/login", loginRouter);
 app.use("/health", healthCheckRouter);
 
 if (process.env.NODE_ENV === "test") {
+	console.log("app.js test if statement")
 	const testingRouter = require("./controllers/testing");
 	app.use("/api/testing", testingRouter);
 }
