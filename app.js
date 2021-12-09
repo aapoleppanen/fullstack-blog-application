@@ -30,7 +30,7 @@ mongoose
 
 mongoose.connection.on('connected', () => console.log('Connected'));
 mongoose.connection.on('error', err => {
-	logError(err);
+	console.log(err);
   });
 	
 
