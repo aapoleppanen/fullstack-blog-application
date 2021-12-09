@@ -12,8 +12,6 @@ const mongoose = require("mongoose");
 const logger = require("./utils/logger");
 
 const mongoUrl = config.MONGODB_URI;
-console.log(mongoUrl, "mongourl");
-console.log(config.PORT, "port");
 mongoose
 	.connect(mongoUrl, {
 		useNewUrlParser: true,
@@ -27,15 +25,10 @@ mongoose
 	.catch((error) => {
 		logger.error("Error connecting to mongoDB", error.message);
 	});
-
-mongoose.connection.on('connected', () => console.log('Connected'));
-mongoose.connection.on('error', err => {
-	console.log(err);
-  });
 	
 
 app.use(cors());
-app.use(express.static("build"));
+app.use(express.static("./frontend/build"));
 app.use(express.json());
 app.use(middleware.requestLogger);
 app.use(middleware.tokenExtractor);
