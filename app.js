@@ -28,6 +28,10 @@ mongoose
 		logger.error("Error connecting to mongoDB", error.message);
 	});
 
+mongoose.connection.on('connected', () => console.log('Connected'));
+mongoose.connection.on('error', () => console.log('Connection failed with - ',err));
+	
+
 app.use(cors());
 app.use(express.static("build"));
 app.use(express.json());
