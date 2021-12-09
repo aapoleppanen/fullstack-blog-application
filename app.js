@@ -29,7 +29,7 @@ mongoose
 	});
 
 mongoose.connection.on('connected', () => console.log('Connected'));
-mongoose.connection.on('error', () => console.log('Connection failed with - ',err));
+mongoose.connection.on('error', () => console.log('Connection failed with'));
 	
 
 app.use(cors());
