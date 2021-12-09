@@ -51,7 +51,7 @@ describe("Blog app", function () {
 				author: "First Author",
 				url: "First Url",
 			});
-			cy.contains("First Blog").contains("view").click();
+			// cy.contains("First Blog").contains("view").click();
 			cy.contains("First Blog").contains("Like").click();
 			cy.contains("Likes 1");
 		});
@@ -61,7 +61,7 @@ describe("Blog app", function () {
 				author: "First Author",
 				url: "First Url",
 			});
-			cy.contains("First Blog").contains("view").click();
+			// cy.contains("First Blog").contains("view").click();
 			cy.contains("First Blog").contains("Delete").click();
 			cy.on("window:confirm", () => true);
 			cy.contains("First Blog").should("not.exist");
@@ -87,20 +87,20 @@ describe("Blog app", function () {
 			});
 		});
 		it("A specific blog can be liked", function () {
-			cy.contains("Second Blog").contains("view").click();
+			// cy.contains("Second Blog").contains("view").click();
 			cy.contains("Second Blog").contains("Like").click();
 			cy.contains("Second Blog").contains("Likes 1");
 		});
 		it("Blogs are sorted by likes", function () {
 			//like second post two times
-			cy.contains("Second Blog").contains("view").click();
+			// cy.contains("Second Blog").contains("view").click();
 			cy.contains("Second Blog").contains("Like").click();
 			cy.contains("Second Blog").contains("Like").click();
 			cy.contains("Second Blog").contains("Like").click();
 			cy.contains("Second Blog").contains("Like").click();
 
 			//like third post once
-			cy.contains("Third Blog").contains("view").click();
+			// cy.contains("Third Blog").contains("view").click();
 			cy.contains("Third Blog").contains("Like").click();
 			cy.contains("Third Blog").contains("Like").click();
 
