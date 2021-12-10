@@ -39,7 +39,7 @@ jobs:
           start: npm run start:test
           wait-on: http://localhost:3003
       - name: Deploy to Heroku
-        #if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message),'#skip')}}
+        if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message),'#skip')}}
         uses: AkhileshNS/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
@@ -47,7 +47,6 @@ jobs:
           heroku_email: aapo.leppanen@gmail.com
           healthcheck: https://fullstackblog-aapol.herokuapp.com/health
           rollbackonhealthcheckfailed: true
-        if: always()
   tagging_pipeline:
     runs-on: ubuntu-latest
     steps:
